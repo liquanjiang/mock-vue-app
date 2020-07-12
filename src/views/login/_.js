@@ -30,10 +30,9 @@ export default {
       console.log(userNames)
       console.log(passwords)
       if (userNames.includes(userName) && passwords.includes(password)) {
-        this.$router.push('/home').then(r => {
-        })
         localStorage.setItem('userName', userName)
-        localStorage.setItem('password', password)
+        localStorage.setItem('password', 'true')
+        this.$router.replace({ name: 'Home' }).finally()
       } else {
         this.$message.warning('请输入正确的用户名和密码')
         localStorage.removeItem('userName')

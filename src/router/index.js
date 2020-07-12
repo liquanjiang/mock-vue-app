@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/Home/Home.vue'
+import { Message } from 'element-ui'
 
 const Login = () => import('../views/login/index')
 const meta = { requireAuth: false } // 表示不需要权限可以直接访问的路由
@@ -11,6 +12,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    meta: meta,
+    redirect: { name: 'Login' }
+  },
+  {
+    path: '/login',
     name: 'Login',
     meta: meta,
     component: Login
@@ -34,6 +40,43 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+/**  * 路由拦截* 权限验证 */
+
+router.beforeEach((to, from, next) => {
+  if (to.path.includes('login')) {
+    window.localStorage.clear()
+  } else {
+    // window.sessionStorage.setItem('isLogin', 'true')
+  }
+  // 验证当前路由所有的匹配中是否需要有登陆验证的
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    // 这里暂时将sessionStorage里是否存有isLogin作为验证是否登陆的条件
+    // 请根据自身业务需要修改
+    const user = window.localStorage.getItem('userName')
+    const psw = window.localStorage.getItem('password')
+    if (user && psw) {
+      next()
+    } else {
+      // 没有登录的时候跳转到登录界面
+      // eslint-disable-next-line new-cap
+      Message({
+        message: '您还没有登录，请先登录',
+        type: 'warning',
+        duration: 5 * 1000
+      })
+      next({ name: 'Login' })
+    }
+  } else {
+    // 不需要身份校验 直接通过
+    next()
+  }
+})
+
+// 路由跳转成功后需要执行的操作
+router.afterEach(to => {
+  // console.log(to)
 })
 
 export default router
