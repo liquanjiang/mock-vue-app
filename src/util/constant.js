@@ -115,24 +115,5 @@ export default {
         },
       ]
     },
-    {
-      menuName: '合同管理',
-      url: 'contract',
-      icon: 'el-icon-menu',
-      children: [
-        {
-          menuName: '归档合同',
-          url: 'phone',
-        },
-        {
-          menuName: '已签合同',
-          url: 'pad',
-        },
-        {
-          menuName: '待签合同',
-          url: 'computer',
-        },
-      ]
-    },
   ]
 }

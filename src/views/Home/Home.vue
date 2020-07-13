@@ -22,6 +22,7 @@
     </div>
     <!-- 右侧路由栏 -->
     <div class="right-sidebar" :class="{ 'left-show': value, 'left-hide': !value }">
+      <div class="bread"></div>
       <router-view/>
     </div>
   </div>
