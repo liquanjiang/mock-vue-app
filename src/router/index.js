@@ -2,8 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home/Home.vue'
 import { Message } from 'element-ui'
+import menu from '@/util/constant'
 
 const Login = () => import('../views/login/index')
+const sale = () => import('@/views/shop/sale/index')
+const empty = () => import('@/views/empty')
 const meta = { requireAuth: false } // 表示不需要权限可以直接访问的路由
 const auth = { requireAuth: true } // 表示需要权限可以直接访问的路由
 
@@ -25,7 +28,27 @@ const routes = [
     path: '/home',
     name: 'Home',
     meta: auth,
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: 'shop/sale',
+        name: 'sale',
+        meta: auth,
+        component: sale,
+      },
+      {
+        path: '404',
+        name: '404',
+        meta: auth,
+        component: empty,
+      },
+      { // 未匹配到的页面
+        path: '*',
+        redirect: {
+          name: '404',
+        }
+      },
+    ],
   },
   {
     path: '/about',
@@ -35,7 +58,13 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  },
+  { // 未匹配到的页面
+    path: '*',
+    redirect: {
+      name: '404',
+    }
+  },
 ]
 
 const router = new VueRouter({
@@ -68,6 +97,8 @@ router.beforeEach((to, from, next) => {
       })
       next({ name: 'Login' })
     }
+  } else if (to.matched.length === 0) {
+    next({ name: '404' })
   } else {
     // 不需要身份校验 直接通过
     next()

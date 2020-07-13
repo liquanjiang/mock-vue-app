@@ -1,12 +1,20 @@
+import SideBar from './../../components/SideBar/index'
+
 export default {
-  name: 'header',
+  name: 'Home',
+  components: {
+    SideBar,
+  },
   data() {
-    return {}
+    return {
+      value: true,
+    }
   },
   methods: {
     logout() {
       window.localStorage.clear()
-      this.$router.push('/login')
+      this.$router.push('/login').then(r => {
+      })
     }
   }
 }
