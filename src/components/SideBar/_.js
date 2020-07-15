@@ -5,7 +5,14 @@ export default {
   data() {
     return {
       menus: menu.menus,
+      openList: [],
+      defaultActive: ''
     }
+  },
+  created() {
+    console.log(this.menus)
+    console.log(this.$route)
+    this.defaultActive = this.$route.name
   },
   methods: {
     handleOpen() {
@@ -13,7 +20,8 @@ export default {
     handleClose() {
     },
     jump(item, menu) {
-      this.$router.push({ name: menu.url }).then(r => {})
+      this.$router.push({ name: menu.url }).then(() => {
+      })
     }
   }
 }

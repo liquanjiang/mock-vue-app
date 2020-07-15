@@ -1,0 +1,35 @@
+.employee-div {
+  background: #FFF;
+  width: calc(100% - 40px);
+  height: calc(100% - 20px);
+  border-radius: 10px;
+}
+
+.search-div {
+  width: calc(100% - 40px);
+  padding: 20px;
+  background: #f6f6f6;
+  border-radius: 5px;
+}
+
+.search-div .el-input {
+  width: 240px;
+}
+
+.table-div {
+  margin-top: 40px;
+  height: calc(100% - 120px);
+  overflow-y: auto;
+}
+
+.add-div .el-input {
+  width: 200px;
+}
+
+.add-div .el-select {
+  width: 200px;
+}
+
+.add-div .el-date-editor {
+  width: 200px;
+}

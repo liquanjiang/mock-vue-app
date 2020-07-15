@@ -5,7 +5,12 @@
       <el-row :gutter="24">
         <el-col :span="6">
           日期：
-          <el-date-picker v-model="date" size='mini' type="date" placeholder="选择日期"/>
+          <el-date-picker
+            v-model="date"
+            size='mini'
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择日期"/>
         </el-col>
         <el-col :span="6">
           是否达标：
@@ -22,7 +27,7 @@
           选择门店：
           <el-select v-model="storeCode" placeholder="请选择" size="mini" clearable>
             <el-option
-              v-for="item in options"
+              v-for="item in stores"
               :key="item.value"
               :label="item.label"
               :value="item.value">
@@ -36,19 +41,23 @@
     <!-- 表格功能区域 -->
     <div class="table-div">
       <el-table :data="tableData" border stripe size="small" style="width: 100%">
-        <el-table-column prop="deviceName" label="日期" align="center"></el-table-column>
-        <el-table-column prop="deviceType" label="门店位置"></el-table-column>
-        <el-table-column prop="photoNumber" label="门店编号"></el-table-column>
-        <el-table-column prop="cpu" label="手机销售额"></el-table-column>
-        <el-table-column prop="battery" label="电脑销售额"></el-table-column>
-        <el-table-column prop="pixel" label="平板销售额"></el-table-column>
-        <el-table-column prop="storage" label="配件销售额"></el-table-column>
+        <el-table-column prop="shopDate" label="日期" align="center"></el-table-column>
+        <el-table-column prop="shopAddress" label="门店位置" width="240"></el-table-column>
+        <el-table-column prop="shopCode" label="门店编号"></el-table-column>
+        <el-table-column prop="phone" label="手机销售额"></el-table-column>
+        <el-table-column prop="computer" label="电脑销售额"></el-table-column>
+        <el-table-column prop="pad" label="平板销售额"></el-table-column>
+        <el-table-column prop="fitting" label="配件销售额"></el-table-column>
         <el-table-column label="是否达标">
           <template slot-scope="scope">
             <span>{{scope.row.fifth ? '是' : '否'}}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="price" label="总销售额"></el-table-column>
+        <el-table-column label="总销售额">
+          <template slot-scope="scope">
+            <span>{{getTotal(scope)}}</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="saleTime" label="备注" align="center"></el-table-column>
       </el-table>
     </div>

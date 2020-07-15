@@ -1,13 +1,14 @@
 <template>
   <div class="side-bar">
     <el-menu
-      default-active="2"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       unique-opened
+      :default-openeds="openList"
+      :default-active="defaultActive"
       active-text-color="#4c7dff"
       @close="handleClose">
-      <el-submenu v-for="(item, index) in menus" :key="index" :index="item.menuName">
+      <el-submenu v-for="(item, index) in menus" :key="index" :index="`/home/${item.url}`">
         <template slot="title">
           <i :class="item.icon"></i>
           <span>{{item.menuName}}</span>

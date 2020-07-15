@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 // 拼接路径
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
@@ -42,6 +42,7 @@ module.exports = {
   },
   devServer: {
     https: false,
+    port: 9999,
     publicPath: baseUrl, // 和 baseUrl 保持一致
   },
   // webpack 设置
