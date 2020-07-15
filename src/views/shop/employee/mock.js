@@ -18,7 +18,7 @@ export default {
       salary: '30000', // 薪水
       level: '5', // 级别
       department: '运营', // 部门
-      address: '北京', // 办公地点
+      address: '洛阳', // 办公地点
     }
   ],
   sexOptions: [

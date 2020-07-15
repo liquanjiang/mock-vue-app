@@ -8,8 +8,8 @@
           <el-input v-model="employeeName" placeholder="请输入人员名称" size="mini"/>
         </el-col>
         <el-col :span="6">
-          员工类别：
-          <el-select v-model="employeeType" placeholder="请选择人员类别" size="mini" clearable>
+          员工职位：
+          <el-select v-model="employeeType" placeholder="请选择人员职位" size="mini" clearable>
             <el-option
               v-for="item in typeOptions"
               :key="item.value"
@@ -44,7 +44,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="year" label="入职年份"></el-table-column>
-        <el-table-column label="类别">
+        <el-table-column label="职位">
           <template slot-scope="scope">
             <span>{{typeArray[scope.row.employeeType]}}</span>
           </template>
@@ -85,8 +85,8 @@
             </el-select>
           </el-col>
           <el-col :span="8">
-            员工类别：
-            <el-select v-model="addEmployeeObject.employeeType" placeholder="请选择人员类别" size="mini" clearable>
+            员工职位：
+            <el-select v-model="addEmployeeObject.employeeType" placeholder="请选择人员职位" size="mini" clearable>
               <el-option
                 v-for="item in typeOptions"
                 :key="item.value"

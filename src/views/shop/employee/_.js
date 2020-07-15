@@ -10,13 +10,13 @@ export default {
     return {
       tableData,
       employeeName: '', // 员工姓名
-      employeeType: '', // 员工类别
+      employeeType: '', // 员工职位
       saleTime: '', // 入职年份
       addEmployeeObject: {
         employeeName: '', // 姓名
         sex: '', // 性别
         year: '', // 入职年份
-        employeeType: '', // 类别
+        employeeType: '', // 职位
         salary: '', // 薪水
         level: '', // 级别
         department: '', // 部门
@@ -162,7 +162,7 @@ export default {
       }
 
       if (!employeeType) {
-        this.$message.warning('请选择员工类别')
+        this.$message.warning('请选择员工职位')
         return false
       }
 
@@ -195,7 +195,7 @@ export default {
         employeeName: '', // 姓名
         sex: '', // 性别
         year: '', // 入职年份
-        employeeType: '', // 类别
+        employeeType: '', // 职位
         salary: '', // 薪水
         level: '', // 级别
         department: '', // 部门
