@@ -36,14 +36,6 @@ export default {
           menuName: '电脑',
           url: 'computer',
         },
-        {
-          menuName: '手表',
-          url: 'watch',
-        },
-        {
-          menuName: '笔记本',
-          url: 'book'
-        },
       ]
     },
     {

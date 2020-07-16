@@ -9,6 +9,11 @@ const equipment = () => import('@/views/shop/equipment/index')
 const sale = () => import('@/views/shop/sale/index')
 const employee = () => import('@/views/shop/employee/index')
 const empty = () => import('@/views/empty')
+// 商品管理下的菜单
+const phone = () => import('@/views/goods/phone/index')
+const pad = () => import('@/views/goods/pad/index')
+const computer = () => import('@/views/goods/computer/index')
+
 const meta = { requireAuth: false } // 表示不需要权限可以直接访问的路由
 const auth = { requireAuth: true } // 表示需要权限可以直接访问的路由
 
@@ -49,6 +54,24 @@ const routes = [
         name: 'employee',
         meta: auth,
         component: employee,
+      },
+      {
+        path: 'goods/phone',
+        name: 'phone',
+        meta: auth,
+        component: phone,
+      },
+      {
+        path: 'goods/pad',
+        name: 'pad',
+        meta: auth,
+        component: pad,
+      },
+      {
+        path: 'goods/computer',
+        name: 'computer',
+        meta: auth,
+        component: computer,
       },
       {
         path: '404',
