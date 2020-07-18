@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // 拼接路径
 function resolve(dir) {
@@ -29,15 +30,17 @@ const configPlugins = [
     jQuery: 'jquery',
     'windows.jQuery': 'jquery'
   }),
+  // new BundleAnalyzerPlugin()
 ]
 
 module.exports = {
   publicPath: baseUrl, // 根据你的实际情况更改这里
   lintOnSave: true,
   configureWebpack: { // 引入jquery
-    // externals: { // 引入百度地圖
-    //   'BMap': 'BMap'
-    // },
+    externals: { // 引入百度地圖
+      // 'BMap': 'BMap'
+      echarts: 'echarts'
+    },
     plugins: IS_DEV ? configPlugins.concat(devPlugins) : configPlugins
   },
   devServer: {
